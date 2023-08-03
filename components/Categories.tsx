@@ -54,7 +54,7 @@ const Categories = ({ data }: CategoriesProps) => {
       </button>
       {data.map((item) => (
         <button
-          onClick={() => onClick(item.name)}
+          onClick={() => onClick(item.id)}
           key={item.id}
           className={cn(
             `
