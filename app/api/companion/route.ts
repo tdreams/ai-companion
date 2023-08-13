@@ -9,7 +9,7 @@ export async function POST(req: Request) {
     const body = await req.json();
     const user = await currentUser();
     const { name, description, instructions, seed, src, categoryId } = body;
-
+    console.log(user);
     if (!user || !user.id || !user.firstName) {
       return new NextResponse("Unauthorized", { status: 401 });
     }
