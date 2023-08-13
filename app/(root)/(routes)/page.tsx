@@ -2,6 +2,7 @@ import Categories from "@/components/Categories";
 import Companions from "@/components/Companions";
 import SearchInput from "@/components/SearchInput";
 import prismadb from "@/lib/prismadb";
+import { auth } from "@clerk/nextjs";
 
 interface RootPageProps {
   searchParams: {
@@ -11,6 +12,8 @@ interface RootPageProps {
 }
 
 const RootPage = async ({ searchParams }: RootPageProps) => {
+  const { userId } = auth();
+  console.log("the user Id is ", userId);
   const data = await prismadb.companion.findMany({
     where: {
       categoryId: searchParams.categoryId,
